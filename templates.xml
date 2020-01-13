@@ -1,0 +1,23 @@
+<templates>
+    <t t-name="Cell">
+        <button t-on-click="select" class="cell">
+            <i t-att-class="iconClass" aria-hidden="true"></i>
+        </button>
+    </t>
+    <t t-name="TicTacToe">
+        <div>
+            <div>
+                Player <t t-esc="state.currentPlayer"></t>'s turn.
+            </div>
+            <div class="board">
+                <t t-foreach="state.cells" t-as="cell">
+                    <Cell cell="cell" t-key="cell.id"></Cell>
+                </t>
+            </div>
+            <div t-if="winner">
+                Player <t t-esc="winner"></t> won!
+                <button t-on-click="reset">Reset</button>
+            </div>
+        </div>
+    </t>
+</templates>
